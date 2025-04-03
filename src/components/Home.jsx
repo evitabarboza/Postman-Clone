@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from "./Header"
 import Form from "./Form"
+import SelectTab from "./SelectTab"
 import { Box } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 
@@ -18,7 +19,9 @@ const Home = () => {
       <Header />
       <Box className={classes.components}>
           <Form />
+          <SelectTab/>
       </Box>
+      
       
     </div>
   )

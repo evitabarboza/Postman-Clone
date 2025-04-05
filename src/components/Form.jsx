@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     },
     textField: { // Fixed case from 'TextField' to 'textField'
         width: '100%',
-        background: '#F6F6F6'
+        background: '#F6F6F6',
+        marginLeft: [5, '!important']
     },
     button: {
         width: 100,

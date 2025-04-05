@@ -3,6 +3,7 @@ import { Box,Tabs, Tab } from '@mui/material'
 import { useState } from 'react'
 import { makeStyles } from '@mui/styles';
 import CreateTable from './CreateTable';
+import CreateJsonText from './CreateJsonText';
 
 const useStyles = makeStyles({
     components: {
@@ -56,8 +57,7 @@ const SelectTab = () => {
             id={`simple-tabpanel-${2}`}
             aria-labelledby={`simple-tab-${2}`}
         >
-          
-        <CreateTable/>
+          <CreateJsonText />
         </Box>
       </Box>
     </div>

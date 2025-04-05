@@ -33,10 +33,9 @@ const AddRow = () => {
         />
       </TableCell>
       <TableCell className={classes.tablecell}>
-      <TextField
-          className={classes.textfield}
-          sx={{ input: { height: 30, padding: '0 5px' } }}
-        />
+        <TextField 
+        className={classes.textfield}
+        sx={{ input: { height: 30, padding: '0 5px' } }}/>
       </TableCell>
     </TableRow>
   )

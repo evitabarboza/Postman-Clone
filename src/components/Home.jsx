@@ -4,6 +4,8 @@ import Form from "./Form"
 import SelectTab from "./SelectTab"
 import { Box } from '@mui/material'
 import { makeStyles } from '@mui/styles';
+// import Response from './Response'
+import ErrorScreen from './ErrorScreen'
 
 const useStyles = makeStyles({
   components: {
@@ -15,15 +17,17 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles();
   return (
-    <div>
+    <>
       <Header />
       <Box className={classes.components}>
           <Form />
           <SelectTab/>
+          {/* <Response /> */}
+          <ErrorScreen />
       </Box>
       
       
-    </div>
+    </>
   )
 }
 

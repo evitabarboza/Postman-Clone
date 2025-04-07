@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Typography, Table, TableHead, TableBody, TableRow, TableCell} from '@mui/material'
 import AddRow from './AddRow'
 import { makeStyles } from '@mui/styles';
+
 
 const useStyles = makeStyles({
   tablecell: {
@@ -13,6 +14,9 @@ const useStyles = makeStyles({
 
 const CreateTable = ({ text }) => {
   const classes = useStyles();
+
+  const [rows, addRows] = useState([0]);
+
   return (
     <Box>
       <Typography mt={2} mb={2}>{text}</Typography>
@@ -25,7 +29,16 @@ const CreateTable = ({ text }) => {
           </TableRow>
         </TableHead>
         <TableBody>  
-            <AddRow />
+            {
+              rows.map((row, index) => (
+                <AddRow 
+                  addRows={addRows}
+                  rowID={index}
+                  key={index}
+                />
+              ))
+
+            }
         </TableBody>
       </Table>
     </Box>

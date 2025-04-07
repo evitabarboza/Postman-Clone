@@ -1,6 +1,7 @@
-import React from 'react'
+import React,  { useContext } from 'react'
 import { Box, Select, MenuItem, TextField, Button } from '@mui/material'
 import { makeStyles } from '@mui/styles';
+import { DataContext } from '../context/DataProvider';
 
 const useStyles = makeStyles({
     components: {
@@ -27,9 +28,24 @@ const useStyles = makeStyles({
 
 const Form = () => {
     const classes = useStyles();
+
+    const { formData, setFormData } = useContext(DataContext);
+
+    const handleChange = (e) => {
+        setFormData({...formData, type: e.target.value});
+       
+    }
+
+    const onUrlChange = (e) => {
+        setFormData({...formData, type: e.target.value});
+    }
+
     return (
         <Box className = {classes.components}>
             <Select
+                value={formData.type}
+                label="POST"
+                onChange={(e) => handleChange(e)}
                 className={classes.select} // Fixed className
             >
                 <MenuItem value={'POST'}>POST</MenuItem>
@@ -38,6 +54,7 @@ const Form = () => {
             <TextField 
                 size="small"
                 className={classes.textField} // Fixed className
+                onChange={(e) => onUrlChange(e)}
             />
             <Button
                 className={classes.button}

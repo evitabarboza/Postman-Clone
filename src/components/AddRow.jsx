@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TableRow, TableCell, Checkbox, TextField } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 
@@ -16,14 +16,29 @@ const useStyles = makeStyles({
   }
 })
 
-const AddRow = () => {
+const AddRow = ({ addRows, rowId }) => {
   const classes = useStyles();
+
+  const [checkCheckbox, setCheckCheckbox] = useState(false);
+
+  const handleChange = (e) => {
+
+    if(!checkCheckbox){
+      setCheckCheckbox(true)
+        addRows(oldArr => [...oldArr, rowId])
+    } else {
+      setCheckCheckbox(false)
+    }
+  }
+
   return (
     <TableRow>
       <TableCell className={classes.tablecell}>
         <Checkbox
+          checked={checkCheckbox}
           size='large'
           className={classes.checkbox}
+          onChange={(e) => handleChange(e)}
         />
       </TableCell>
       <TableCell className={classes.tablecell}>

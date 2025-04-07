@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   }
 })
 
-const AddRow = ({ addRows, rowId }) => {
+const AddRow = ({ addRows, rowId, data, setData }) => {
   const classes = useStyles();
 
   const [checkCheckbox, setCheckCheckbox] = useState(false);
@@ -30,6 +30,32 @@ const AddRow = ({ addRows, rowId }) => {
       setCheckCheckbox(false)
     }
   }
+
+  // {
+  //   checkbox: true,
+  //   key: 'codeforinterview'
+  //   value: 'youtube  channel',
+  //   id: rowId
+  // }
+
+  const onTextChange = (e) => {
+    // console.log(e.target.name, e.target.value)
+    let result = data.filter(entry => entry.id === rowId)[0]
+    result = { ...result, id: rowId, [e.target.name]: e.target.value }
+
+    let index = data.findIndex(value => value.id === rowId)
+
+    if (index === -1) {
+        setData(oldArr => [...oldArr, result])
+    } else {
+      const newArray = Object.assign([...data], {
+          [index]: result
+      })
+      setData(newArray)
+    }
+    console.log(data)
+  }
+
 
   return (
     <TableRow>
@@ -45,12 +71,17 @@ const AddRow = ({ addRows, rowId }) => {
         <TextField
           className={classes.textfield}
           sx={{ input: { height: 30, padding: '0 5px' } }}
+          onChange={(e) => onTextChange(e)}
+          name="key"
         />
       </TableCell>
       <TableCell className={classes.tablecell}>
         <TextField 
         className={classes.textfield}
-        sx={{ input: { height: 30, padding: '0 5px' } }}/>
+        sx={{ input: { height: 30, padding: '0 5px' } }}
+          onChange={(e) => onTextChange(e)}
+          name="value"
+        />
       </TableCell>
     </TableRow>
   )

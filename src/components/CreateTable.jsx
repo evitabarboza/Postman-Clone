@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   }
 })
 
-const CreateTable = ({ text }) => {
+const CreateTable = ({ text, data, setData }) => {
   const classes = useStyles();
 
   const [rows, addRows] = useState([0]);
@@ -33,8 +33,10 @@ const CreateTable = ({ text }) => {
               rows.map((row, index) => (
                 <AddRow 
                   addRows={addRows}
-                  rowID={index}
+                  rowId={index}
                   key={index}
+                  data={data}
+                  setData={setData} 
                 />
               ))
 

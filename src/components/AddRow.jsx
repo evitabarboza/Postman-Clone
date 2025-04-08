@@ -21,14 +21,33 @@ const AddRow = ({ addRows, rowId, data, setData }) => {
 
   const [checkCheckbox, setCheckCheckbox] = useState(false);
 
+
+
   const handleChange = (e) => {
+    let result = data.filter(entry => entry.id === Number(e.target.name))[0]
 
     if(!checkCheckbox){
       setCheckCheckbox(true)
         addRows(oldArr => [...oldArr, rowId])
+        result={ ...result, id: rowId, check: true }
     } else {
       setCheckCheckbox(false)
+      result={ ...result, id: rowId, check: false }
     }
+
+
+
+    let index = data.findIndex(value => value.id === Number(e.target.name))
+
+    if (index === -1) {
+        setData(oldArr => [...oldArr, result])
+    } else {
+      const newArray = Object.assign([...data], {
+          [index]: result
+      })
+      setData(newArray)
+    }
+
   }
 
   // {
@@ -65,6 +84,7 @@ const AddRow = ({ addRows, rowId, data, setData }) => {
           size='large'
           className={classes.checkbox}
           onChange={(e) => handleChange(e)}
+          name={rowId}
         />
       </TableCell>
       <TableCell className={classes.tablecell}>

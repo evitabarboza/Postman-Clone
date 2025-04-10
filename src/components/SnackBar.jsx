@@ -9,7 +9,7 @@ const SnackBar = ({ errorMsg, error, setError }) => {
     return (
         <Snackbar
             open={error}
-            autoHideDuration={4000}
+            autoHideDuration={3000}
             onClose={handleClose}
             message={errorMsg}
         />

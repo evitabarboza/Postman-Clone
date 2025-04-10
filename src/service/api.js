@@ -1,21 +1,24 @@
 import axios from 'axios';
-import { getHeaderAndParams } from '../utils/common-utils' 
+
+import {  getHeadersAndParams } from '../utils/common-utils';
 
 export const getData = async (formData, jsonText, paramData, headerData) => {
-    const apiType = formData.type.toLowerCase();
-    const apiURL = formData.url;
-    const apiHeader = getHeaderAndParams(headerData)
-    const apiParams = getHeaderAndParams(paramData)
+    
+    const apiType = formData.type.toLowerCase(); 
+    const apiUrl = formData.url;
+    const apiHeaders = getHeadersAndParams(headerData);
+    const apiParams = getHeadersAndParams(paramData);
+
     try {
         return await axios({
             method: apiType,
-            url: apiURL,
+            url: apiUrl,
             body: jsonText,
-            headers: apiHeader,
+            headers: apiHeaders,
             params: apiParams
         })
     } catch (error) {
-        console.log('Error while calling API', error);
+        console.log('Error while getting the response ', error);
         return 'error';
     }
 }

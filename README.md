@@ -32,7 +32,7 @@ The Postman Clone is a single-page web application built using ReactJS. It inclu
 1. **Clone the Repository**:
 
 ```bash
-git clone https://github.com/your-username/Postman-Clone.git
+git clone https://github.com/evitabarboza/Postman-Clone.git
 ```
 
 2. **Install Dependencies**:
